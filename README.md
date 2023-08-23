@@ -1,4 +1,4 @@
-PP-215 is a beautiful flip clock timer used to power electronics (eg. audio equipment) at the same time.
+PP-215 is a beautiful flip clock timer used to power electronics (e.g. audio equipment) at the same time.
 
 The international model JT-215 can be found from Ebay for around $200 but this Japan model is much cheaper at around $60 but only works on 100v outlet.
 
