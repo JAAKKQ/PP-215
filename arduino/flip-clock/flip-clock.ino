@@ -136,6 +136,6 @@ void relay(bool state) {
 void loop() {
   func();
   if (rtc.second() == 0) {
-    move(41);
+    move(42);
   }
 }
