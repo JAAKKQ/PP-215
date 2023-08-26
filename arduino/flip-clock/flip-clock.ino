@@ -1,4 +1,4 @@
-//Written By Rene Karkkainen - r3ne.net
+// Written By Rene Karkkainen - r3ne.net
 
 #include "Arduino.h"
 #include "uRTCLib.h"
@@ -6,18 +6,34 @@
 // uRTCLib rtc;
 uRTCLib rtc(0x68);
 
-// Define pins for controlling the 28BYJ-48 motor
+// Define motor pins
 const int motorPins[] = { 2, 3, 4, 5 };  // IN1, IN2, IN3, IN4
+
+// Display led under clock numbers
 const int display_Led = 6;
+
+// Power led to come on always when relay is closed.
 const int power_Led = 10;
+// Switch from auto to ever-on
 const int off_switch = 9;
+
+// Buttons inside the clock
+// Button that goes on when sleep timer is set.
 const int sleep_timer_button = 8;
+
+// Button that goes on when alarm should sound.
 const int alarm_button = 7;
 
+// Set this to your relay pin.
+int relay_module = 12;
+
+
+// States of the buttons.
 int off_state = 0;
 int sleep_state = 0;
 int alarm_state = 0;
 
+// Ignore this. It is for my remote cotrolled relay.
 int relay_pin = 11;
 int relay_state = 0;
 
@@ -71,12 +87,8 @@ void setup() {
 
   URTCLIB_WIRE.begin();
 
-  // Comment out below line once you set the date & time.
-  // Following line sets the RTC with an explicit date & time
-  // for example to set January 13 2022 at 12:56 you would call:
-  rtc.set(0, 56, 12, 5, 13, 1, 22);
-  // rtc.set(second, minute, hour, dayOfWeek, dayOfMonth, month, year)
-  // set day of week (1=Sunday, 7=Saturday)
+  rtc.set(0, 0, 0, 0, 0, 0, 0);
+  serial.println(rtc);
 }
 
 void func() {
