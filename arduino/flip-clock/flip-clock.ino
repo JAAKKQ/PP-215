@@ -75,6 +75,7 @@ void setup() {
   pinMode(display_Led, OUTPUT);
   pinMode(power_Led, OUTPUT);
   pinMode(relay_pin, OUTPUT);
+  pinMode(relay_module, OUTPUT);
   digitalWrite(display_Led, HIGH);
   digitalWrite(power_Led, HIGH);
 
@@ -87,8 +88,8 @@ void setup() {
 
   URTCLIB_WIRE.begin();
 
-  rtc.set(0, 0, 0, 0, 0, 0, 0);
-  serial.println(rtc);
+  rtc.set(0, 56, 12, 5, 13, 1, 22);
+  Serial.println("More info: https://github.com/JAAKKQ/PP-215");
 }
 
 void func() {
@@ -111,6 +112,7 @@ void func() {
 void relay(bool state) {
   if (state) {
     if (relay_state == 0) {
+      digitalWrite(relay_module, HIGH);
       digitalWrite(relay_pin, HIGH);
       delay(50);
       digitalWrite(relay_pin, LOW);
@@ -118,6 +120,7 @@ void relay(bool state) {
     }
   } else {
     if (relay_state == 1) {
+      digitalWrite(relay_module, LOW);
       digitalWrite(relay_pin, HIGH);
       delay(50);
       digitalWrite(relay_pin, LOW);
@@ -133,6 +136,6 @@ void relay(bool state) {
 void loop() {
   func();
   if (rtc.second() == 0) {
-    move(43);
+    move(41);
   }
 }
