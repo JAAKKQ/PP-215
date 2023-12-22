@@ -34,7 +34,7 @@
 //#define STEPS_PER_CYCLE 2048
 //#define MINUTES_PER_CYCLE 15
 // Copal 227
-#define STEPS_PER_CYCLE 1550 // Goes 1 min forward every 2 hours
+#define STEPS_PER_CYCLE 1531
 #define MINUTES_PER_CYCLE 9
 
 #include <Tone.h>  // https://github.com/bhagman/Tone
@@ -429,6 +429,7 @@ void cmd_update(void) {
             analogWrite(backlight_led, backlight_brightness);
             break;
           case 'Z':
+            // When Arduino 16:20 Display is then 13:20
             // Set date/time: Z20211118094000 - 2021-11-18 09:40:00.
             if (strlen(cmd_buffer) != 15) {
               Serial.println("Bad format - Zyyyymmddhhmmss");
